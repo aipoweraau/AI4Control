@@ -2,7 +2,9 @@
 
 AI4Control is a MATLAB/Simulink toolbox for reproducible benchmarking and training of AI-assisted control methods for power electronic systems. The current release focuses on a permanent-magnet synchronous motor (PMSM) drive benchmark and compares PI, MPC, and differentiable predictive control (DPC) under a common plant, disturbance, logging, and performance-evaluation workflow.
 
-![AI4Control toolbox overview](docs/AI4Control_overview.svg)
+![AI4Control toolbox overview](docs/AI4Control_overview.png)
+
+The overview summarizes the intended training-to-evaluation workflow. AI-based controllers can first be trained from PMSM simulation data, then PI, MPC, DPC, trained AI controllers, or user-defined controllers are plugged into the same open PMSM simulation platform. All controllers are evaluated under unified steady-state, transient, disturbance, and robustness scenarios, and the results are compared using the same performance metrics.
 
 ## What the toolbox provides
 
@@ -12,6 +14,7 @@ AI4Control is a MATLAB/Simulink toolbox for reproducible benchmarking and traini
 - Training-data files for the PMSM learning workflow: `PMSM_dataset.mat` and `PMSM_2kW_dataset.mat`.
 - Automated extraction of overshoot, settling time, current THD, robustness, and computation-speed scores.
 - Radar-chart visualization for normalized comparison across control strategies.
+- GUI support for data generation, neural-network training, PMSM control simulation, and metric visualization.
 
 ## Repository contents
 
@@ -35,7 +38,7 @@ AI4Control is a MATLAB/Simulink toolbox for reproducible benchmarking and traini
 4. Train and validate the neural-network controller.
 5. Open `app1.mlapp` from the trainer or directly from MATLAB.
 6. Run closed-loop simulations with PI, MPC, DPC, or a new controller wrapper.
-7. Use `calc_metrics_one_run.m` and `draw_radar_from_workspace.m` to produce the normalized comparison.
+7. Use `calc_metrics_one_run.m` and `draw_radar_from_workspace.m` to produce the normalized numerical and radar-chart comparison.
 
 For a script-based comparison, run:
 

@@ -2,6 +2,21 @@
 
 This document provides the implementation details that support the AI4Control PMSM benchmark and the online toolbox description.
 
+## Toolbox GUI workflow
+
+The toolbox is organized around two MATLAB app interfaces. The AI Control Trainer, `apptrain.mlapp`, supports PMSM-simulation data loading or generation, neural-network configuration, training and validation loss monitoring, and trained-model export. The PMSM Control Dashboard, `app1.mlapp`, supports closed-loop simulation, controller selection, PMSM benchmark execution, signal visualization, and performance-metric evaluation.
+
+The intended workflow is:
+
+1. Generate or load PMSM simulation data for the AI-controller training task.
+2. Configure the neural-network structure and training settings in the training interface.
+3. Train and validate the AI controller and export the trained controller parameters.
+4. Deploy the trained controller through the same PMSM benchmark used by PI and MPC.
+5. Run unified test scenarios and extract the same metrics for every controller.
+6. Compare PI, MPC, DPC, trained AI controllers, and user-defined controllers with unified numerical metrics and radar-chart visualization.
+
+The GUI therefore implements the same training-to-evaluation logic described by the benchmark workflow: train if needed, plug the controller into the common PMSM platform, run unified tests, and compare with unified metrics.
+
 ## Benchmark architecture
 
 The benchmark separates the common PMSM evaluation environment from controller-specific implementation. The common environment provides:
