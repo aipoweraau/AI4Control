@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="660" viewBox="0 0 1120 660" role="img" aria-labelledby="title desc">
+  <title id="title">AI4Control toolbox overview</title>
+  <desc id="desc">Overview diagram showing data generation, AI controller training, controller wrappers, the common PMSM benchmark, metric extraction, and radar chart comparison.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#394150"/>
+    </marker>
+    <style>
+      .title { font: 700 26px Arial, sans-serif; fill: #111827; }
+      .label { font: 700 17px Arial, sans-serif; fill: #111827; }
+      .small { font: 14px Arial, sans-serif; fill: #374151; }
+      .tiny { font: 12px Arial, sans-serif; fill: #4b5563; }
+      .box { fill: #ffffff; stroke: #9ca3af; stroke-width: 1.4; rx: 8; }
+      .blue { fill: #e8f2ff; stroke: #4f83cc; }
+      .green { fill: #e9f8ef; stroke: #4f9f6e; }
+      .amber { fill: #fff4df; stroke: #d9912c; }
+      .red { fill: #fff0f0; stroke: #d76a6a; }
+      .gray { fill: #f5f7fa; stroke: #9ca3af; }
+      .line { fill: none; stroke: #394150; stroke-width: 1.8; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #6b7280; stroke-width: 1.6; stroke-dasharray: 6 5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1120" height="660" fill="#fbfcfe"/>
+  <text x="40" y="54" class="title">AI4Control PMSM Benchmark and Training Workflow</text>
+  <text x="42" y="84" class="small">Common plant, test scenarios, logging, and metrics are shared; controller internals remain controller-specific.</text>
+
+  <rect x="50" y="130" width="235" height="115" class="box blue"/>
+  <text x="72" y="164" class="label">Training data</text>
+  <text x="72" y="191" class="small">MPC closed-loop PMSM runs</text>
+  <text x="72" y="214" class="tiny">25 speed-load conditions</text>
+  <text x="72" y="234" class="tiny">Reference steps and transients</text>
+
+  <rect x="50" y="365" width="235" height="125" class="box green"/>
+  <text x="72" y="399" class="label">AI Control Trainer</text>
+  <text x="72" y="426" class="small">apptrain.mlapp</text>
+  <text x="72" y="449" class="tiny">Network setup, training, validation</text>
+  <text x="72" y="469" class="tiny">Export trained controller parameters</text>
+
+  <rect x="405" y="118" width="260" height="145" class="box amber"/>
+  <text x="430" y="152" class="label">Controller wrappers</text>
+  <text x="430" y="181" class="small">PI, MPC, DPC, or new methods</text>
+  <text x="430" y="207" class="tiny">Map dq, alpha-beta, abc, or switching</text>
+  <text x="430" y="227" class="tiny">signals to the benchmark boundary</text>
+  <text x="430" y="247" class="tiny">Handle local sampling-rate adaptation</text>
+
+  <rect x="395" y="345" width="285" height="165" class="box red"/>
+  <text x="420" y="379" class="label">Common PMSM benchmark</text>
+  <text x="420" y="408" class="small">PMSMcontrolbenchmark.slx</text>
+  <text x="420" y="434" class="tiny">Plant, inverter, modulation</text>
+  <text x="420" y="454" class="tiny">Disturbance scenarios and timing</text>
+  <text x="420" y="474" class="tiny">Shared logging and signal export</text>
+  <text x="420" y="494" class="tiny">Same protocol for fair comparison</text>
+
+  <rect x="805" y="120" width="245" height="125" class="box gray"/>
+  <text x="830" y="154" class="label">Metric extraction</text>
+  <text x="830" y="183" class="small">calc_metrics_one_run.m</text>
+  <text x="830" y="209" class="tiny">Overshoot, settling time, THD</text>
+  <text x="830" y="229" class="tiny">Robustness and execution scores</text>
+
+  <rect x="805" y="365" width="245" height="125" class="box blue"/>
+  <text x="830" y="399" class="label">Comparison output</text>
+  <text x="830" y="428" class="small">draw_radar_from_workspace.m</text>
+  <text x="830" y="454" class="tiny">Normalized radar chart</text>
+  <text x="830" y="474" class="tiny">Reproducible controller ranking</text>
+
+  <path d="M 285 188 C 330 188 355 188 405 188" class="line"/>
+  <path d="M 168 245 C 168 300 168 325 168 365" class="line"/>
+  <path d="M 285 428 C 335 428 350 428 395 428" class="line"/>
+  <path d="M 535 263 C 535 300 535 315 535 345" class="line"/>
+  <path d="M 680 428 C 735 428 760 428 805 428" class="line"/>
+  <path d="M 927 245 C 927 295 927 325 927 365" class="line"/>
+  <path d="M 665 188 C 720 188 755 188 805 188" class="line"/>
+  <path d="M 805 455 C 740 575 320 585 220 490" class="dash"/>
+
+  <text x="324" y="175" class="tiny">shared state/reference data</text>
+  <text x="697" y="175" class="tiny">simulation outputs</text>
+  <text x="695" y="418" class="tiny">logged signals</text>
+  <text x="600" y="586" class="tiny">iterate controller design and training</text>
+</svg>

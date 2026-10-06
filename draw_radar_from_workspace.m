@@ -1,10 +1,9 @@
 function hFig = draw_radar_from_workspace()
 algorithms = {'PI','MPC','DPC'};
 
-score_WQ = @(thd) max(0, min(1, 1 - (thd - 2) / 8));
+score_WQ = @(thd) max(0, min(1, (10 - thd) / (10 - 2)));
 score_OR = @(os)  max(0, min(1, (15 - os) / (15 - 5)));
-% score_SS = @(st) max(0, min(1, (0.10 - st) / (0.10 - 0.03)));
-score_SS = @(st)  max(0, min(1, (0.04 - st) / (0.04 - 0.02)));
+score_SS = @(st)  max(0, min(1, (10 - st * 1000) / (10 - 2)));
 
 
 
@@ -12,8 +11,8 @@ score_SS = @(st)  max(0, min(1, (0.04 - st) / (0.04 - 0.02)));
 % robustness = struct('PI',1.0,'MPC',0.5,'DPC',0.85);
 
 
-comp_speed = struct('PI',1.0,'MPC',0.4,'DPC',0.7);
-robustness = struct('PI',1.0,'MPC',0.7,'DPC',0.7);
+comp_speed = struct('PI',1.0,'MPC',0.0,'DPC',(50 - 17) / (50 - 4));
+robustness = struct('PI',1.0,'MPC',2/3,'DPC',2/3);
 
 
 available = {};

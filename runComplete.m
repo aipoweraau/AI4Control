@@ -43,7 +43,8 @@ function runComplete(CA_values)
             Te_len = evalin('base', 'length(Te)');
             ia_len = evalin('base', 'length(ia)');
             CA1_val = evalin('base', 'CA1');
-            fprintf('✓ 仿真完成 (            fprintf('  Te: %d 点, ia: %d 点, CA1 = %d\n', Te_len, ia_len, CA1_val);
+            fprintf('✓ 仿真完成\n');
+            fprintf('  Te: %d 点, ia: %d 点, CA1 = %d\n', Te_len, ia_len, CA1_val);
             
             % 计算指标（如果函数存在）
             if exist('calc_metrics_one_run', 'file')
